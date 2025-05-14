@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pawfect Companions | Dog Adoption & Care</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+        }
+        .dog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover {
+            background-color: #fef3c7;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #f59e0b;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        .animate-bounce {
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-20px);}
+            60% {transform: translateY(-10px);}
+        }
+        .paw-print {
+            position: absolute;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        .breed-card:hover .breed-image {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-800 bg-amber-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <div class="flex items-center">
+                        <i class="fas fa-paw text-amber-500 text-3xl mr-2"></i>
+                        <span class="text-xl font-bold text-gray-900">Pawfect <span class="text-amber-500">Companions</span></span>
+                    </div>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-8">
+                        <a href="#" class="nav-link px-3 py-2 text-sm font-medium text-gray-900 hover:text-amber-600">Home</a>
+                        <a href="#adopt" class="nav-link px-3 py-2 text-sm font-medium text-gray-900 hover:text-amber-600">Adopt</a>
+                        <a href="#breeds" class="nav-link px-3 py-2 text-sm font-medium text-gray-900 hover:text-amber-600">Breeds</a>
+                        <a href="#care" class="nav-link px-3 py-2 text-sm font-medium text-gray-900 hover:text-amber-600">Care</a>
+                        <a href="#community" class="nav-link px-3 py-2 text-sm font-medium text-gray-900 hover:text-amber-600">Community</a>
+                        <button class="bg-amber-500 text-white px-6 py-2 rounded-full font-medium hover:bg-amber-600 transition duration-300 flex items-center">
+                            <i class="fas fa-dog mr-2"></i> Get Matched
+                        </button>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-btn" class="text-gray-500 hover:text-amber-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#" class="block px-3 py-2 text-base font-medium text-gray-900 hover:text-amber-600">Home</a>
+                <a href="#adopt" class="block px-3 py-2 text-base font-medium text-gray-900 hover:text-amber-600">Adopt</a>
+                <a href="#breeds" class="block px-3 py-2 text-base font-medium text-gray-900 hover:text-amber-600">Breeds</a>
+                <a href="#care" class="block px-3 py-2 text-base font-medium text-gray-900 hover:text-amber-600">Care</a>
+                <a href="#community" class="block px-3 py-2 text-base font-medium text-gray-900 hover:text-amber-600">Community</a>
+                <button class="w-full bg-amber-500 text-white px-6 py-2 rounded-full font-medium hover:bg-amber-600 transition duration-300 mt-2 flex items-center justify-center">
+                    <i class="fas fa-dog mr-2"></i> Get Matched
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient pt-32 pb-20 md:pt-40 md:pb-32 text-white relative overflow-hidden">
+        <!-- Paw prints background -->
+        <div class="paw-print top-10 left-1/4 text-4xl">🐾</div>
+        <div class="paw-print top-1/4 right-20 text-5xl">🐾</div>
+        <div class="paw-print bottom-20 left-20 text-6xl">🐾</div>
+        <div class="paw-print bottom-1/3 right-1/3 text-3xl">🐾</div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="md:flex items-center justify-between">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold leading-tight mb-6">Find Your <span class="underline decoration-amber-300">Pawfect</span> Companion</h1>
+                    <p class="text-lg md:text-xl text-amber-100 mb-8">We connect loving homes with dogs in need. Browse adoptable dogs, learn about breeds, and join our dog-loving community.</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <button class="bg-white text-amber-600 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition duration-300 flex items-center">
+                            <i class="fas fa-search mr-2"></i> Find a Dog
+                        </button>
+                        <button class="border-2 border-white text-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-amber-600 transition duration-300 flex items-center">
+                            <i class="fas fa-heart mr-2"></i> How to Adopt
+                        </button>
+                    </div>
+                    <div class="mt-8 flex items-center">
+                        <div class="flex -space-x-2">
+                            <img class="inline-block h-10 w-10 rounded-full ring-2 ring-white" src="https://randomuser.me/api/portraits/women/12.jpg" alt="">
+                            <img class="inline-block h-10 w-10 rounded-full ring-2 ring-white" src="https://randomuser.me/api/portraits/men/32.jpg" alt="">
+                            <img class="inline-block h-10 w-10 rounded-full ring-2 ring-white" src="https://randomuser.me/api/portraits/women/45.jpg" alt="">
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm font-medium">500+ happy adoptions this year</p>
+                            <div class="flex">
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <i class="fas fa-star text-yellow-400"></i>
+                                <span class="ml-2 text-sm">4.9 (320 reviews)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 relative">
+                    <img src="https://images.unsplash.com/photo-1586671267731-da2cf3ceeb80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1498&q=80" alt="Happy dog" class="rounded-3xl shadow-2xl border-4 border-white">
+                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg hidden md:block animate-bounce">
+                        <div class="flex items-center">
+                            <div class="bg-amber-100 p-3 rounded-full mr-3">
+                                <i class="fas fa-home text-amber-600 text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-900">Adoption Events</p>
+                                <p class="text-sm text-gray-600">Every Saturday</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Adoption Section -->
+    <section id="adopt" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-amber-600 font-semibold">MEET OUR DOGS</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4">Dogs Waiting for Their Forever Homes</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">Each of these wonderful companions is ready to bring joy to your life. Could you be their perfect match?</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Dog 1 -->
+                <div class="dog-card bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition duration-300">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1601758003122-53c40e686a19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Golden Retriever" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        <div class="absolute top-4 right-4 bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                            ADOPTABLE
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold">Buddy</h3>
+                            <span class="bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded">Male</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Golden Retriever • 2 years old</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Friendly</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Good with kids</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Loves walks</span>
+                        </div>
+                        <button class="w-full bg-amber-500 text-white px-6 py-2 rounded-full font-medium hover:bg-amber-600 transition duration-300">
+                            Meet Buddy
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Dog 2 -->
+                <div class="dog-card bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition duration-300">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1588943211346-0908a1fbde2e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1635&q=80" alt="Beagle" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        <div class="absolute top-4 right-4 bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                            ADOPTABLE
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold">Luna</h3>
+                            <span class="bg-pink-100 text-pink-800 text-xs px-2 py-1 rounded">Female</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">Beagle • 3 years old</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Playful</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Good with dogs</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Crate trained</span>
+                        </div>
+                        <button class="w-full bg-amber-500 text-white px-6 py-2 rounded-full font-medium hover:bg-amber-600 transition duration-300">
+                            Meet Luna
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Dog 3 -->
+                <div class="dog-card bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition duration-300">
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80" alt="French Bulldog" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+                        <div class="absolute top-4 right-4 bg-amber-500 text-white px-3 py-1 rounded-full text-xs font-bold">
+                            ADOPTABLE
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold">Max</h3>
+                            <span class="bg-amber-100 text-amber-800 text-xs px-2 py-1 rounded">Male</span>
+                        </div>
+                        <p class="text-gray-600 mb-4">French Bulldog • 1 year old</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Affectionate</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Apartment friendly</span>
+                            <span class="bg-gray-100 text-gray-800 text-xs px-2 py-1 rounded">Low energy</span>
+                        </div>
+                        <button class="w-full bg-amber-500 text-white px-6 py-2 rounded-full font-medium hover:bg-amber-600 transition duration-300">
+                            Meet Max
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="border-2 border-amber-500 text-amber-500 px-8 py-3 rounded-full font-bold hover:bg-amber-500 hover:text-white transition duration-300">
+                    View All Available Dogs
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Breeds Section -->
+    <section id="breeds" class="py-20 bg-amber-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-amber-600 font-semibold">DOG BREEDS</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4">Find the Perfect Breed for Your Lifestyle</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">Learn about different dog breeds to find one that matches your energy level, living space, and personality.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Breed 1 -->
+                <div class="breed-card bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1594149929911-78975a43d4f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Labrador Retriever" class="w-full h-full object-cover transition duration-500 breed-image">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Labrador Retriever</h3>
+                        <div class="flex justify-between text-sm text-gray-600 mb-3">
+                            <span><i class="fas fa-ruler-combined mr-1"></i> Medium-Large</span>
+                            <span><i class="fas fa-bolt mr-1"></i> High Energy</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Friendly, outgoing, and high-spirited companions who have more than enough affection to go around.</p>
+                        <button class="text-amber-600 font-medium text-sm hover:text-amber-800 transition duration-300">
+                            Learn More <i class="fas fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Breed 2 -->
+                <div class="breed-card bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1583511655826-05700442b31b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Poodle" class="w-full h-full object-cover transition duration-500 breed-image">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Poodle</h3>
+                        <div class="flex justify-between text-sm text-gray-600 mb-3">
+                            <span><i class="fas fa-ruler-combined mr-1"></i> All Sizes</span>
+                            <span><i class="fas fa-bolt mr-1"></i> Medium Energy</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Exceptionally smart and active dogs with an air of distinction and dignity.</p>
+                        <button class="text-amber-600 font-medium text-sm hover:text-amber-800 transition duration-300">
+                            Learn More <i class="fas fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Breed 3 -->
+                <div class="breed-card bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Bulldog" class="w-full h-full object-cover transition duration-500 breed-image">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Bulldog</h3>
+                        <div class="flex justify-between text-sm text-gray-600 mb-3">
+                            <span><i class="fas fa-ruler-combined mr-1"></i> Medium</span>
+                            <span><i class="fas fa-bolt mr-1"></i> Low Energy</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Docile, willful, and friendly companions known for their loose, wrinkled skin and distinctive pushed-in nose.</p>
+                        <button class="text-amber-600 font-medium text-sm hover:text-amber-800 transition duration-300">
+                            Learn More <i class="fas fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Breed 4 -->
+                <div class="breed-card bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 transition duration-300">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1364&q=80" alt="French Bulldog" class="w-full h-full object-cover transition duration-500 breed-image">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">French Bulldog</h3>
+                        <div class="flex justify-between text-sm text-gray-600 mb-3">
+                            <span><i class="fas fa-ruler-combined mr-1"></i> Small</span>
+                            <span><i class="fas fa-bolt mr-1"></i> Low Energy</span>
+                        </div>
+                        <p class="text-gray-600 text-sm mb-4">Playful, smart, adaptable, and completely irresistible dogs with bat-like ears.</p>
+                        <button class="text-amber-600 font-medium text-sm hover:text-amber-800 transition duration-300">
+                            Learn More <i class="fas fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button class="border-2 border-amber-500 text-amber-500 px-8 py-3 rounded-full font-bold hover:bg-amber-500 hover:text-white transition duration-300">
+                    Explore All Breeds
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Care Tips Section -->
+    <section id="care" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-amber-600 font-semibold">DOG CARE</span>
+                <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-4">Essential Tips for Happy, Healthy Dogs</h2>
+                <p class="max-w-2xl mx-auto text-gray-600">Learn how to care for your canine companion with our expert advice on nutrition, training, and health.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Tip 1 -->
+                <div class="bg-amber-50 rounded-xl p-8 border border-amber-100">
+                    <div class="bg-amber-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-bone text-amber-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Nutrition & Diet</h3>
+                    <p class="text-gray-600 mb-4">Learn what to feed your dog at different life stages and how to maintain a healthy weight.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                            <span>Choosing the right food</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                            <span>Feeding schedules</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                            <span>Healthy treats</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="text-amber-600 font-medium inline-flex items-center hover:text-amber-800">
+                        Read Article <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Tip 2 -->
+                <div class="bg-amber-50 rounded-xl p-8 border border-amber-100">
+                    <div class="bg-amber-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-graduation-cap text-amber-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Training Basics</h3>
+                    <p class="text-gray-600 mb-4">Essential commands and positive reinforcement techniques for well-behaved dogs.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                            <span>House training</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                            <span>Basic commands</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                            <span>Behavior correction</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="text-amber-600 font-medium inline-flex items-center hover:text-amber-800">
+                        Read Article <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                
+                <!-- Tip 3 -->
+                <div class="bg-amber-50 rounded-xl p-8 border border-amber-100">
+                    <div class="bg-amber-100 w-16 h-16 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-heartbeat text-amber-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Health & Wellness</h3>
+                    <p class="text-gray-600 mb-4">Preventive care, common health issues, and when to visit the vet.</p>
+                    <ul class="space-y-2 mb-6">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                            <span>Vaccination schedules</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                            <span>Grooming needs</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-amber-500 mt-1 mr-2"></i>
+                            <span>Exercise requirements</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="text-amber-600 font-medium inline-flex items-center hover:text-amber-800">
+                        Read Article <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section id="community" class="py-20 bg-amber-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="md:flex items-center justify-between">
+                <div class="md:w-1/2 mb-12 md:mb-0">
+                    <span class="text-amber-700 font-semibold">JOIN OUR COMMUNITY</span>
+                    <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-6">Connect With Fellow Dog Lovers</h2>
+                    <p class="text-lg text-amber-900 mb-8">Join our active community of dog owners, trainers, and enthusiasts. Share stories, ask questions, and participate in local events.</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="bg-white p-6 rounded-xl shadow-sm">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-amber-500 text-white p-3 rounded-full mr-4">
+                                    <i class="fas fa-calendar-alt text-xl"></i>
+                                </div>
+                                <h3 class="font-bold text-lg">Upcoming Events</h3>
+                            </div>
+                            <p class="text-gray-600 mb-4">Weekly meetups, training workshops, and adoption drives in your area.</p>
+                            <button class="text-amber-600 font-medium hover:text-amber-800">
+                                View Calendar <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-xl shadow-sm">
+                            <div class="flex items-center mb-4">
+                                <div class="bg-amber-500 text-white p-3 rounded-full mr-4">
+                                    <i class="fas fa-users text-xl"></i>
+                                </div>
+                                <h3 class="font-bold text-lg">Discussion Forums</h3>
+                            </div>
+                            <p class="text-gray-600 mb-4">Get advice, share experiences, and connect with other dog owners.</p>
+                            <button class="text-amber-600 font-medium hover:text-amber-800">
+                                Join Conversations <i class="fas fa-arrow-right ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2 md:pl-12">
+                    <div class="bg-white p-8 rounded-xl shadow-lg">
+                        <h3 class="text-2xl font-bold mb-6">Sign Up for Our Newsletter</h3>
+                        <p class="text-gray-600 mb-6">Get monthly tips, adoption stories, and event invites straight to your inbox.</p>
+                        
+                        <form class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500">
+                            </div>
+                            <div class="flex items-center">
+                                <input id="dog-owner" type="checkbox" class="h-4 w-4 text-amber-600 focus:ring-amber-500 border-gray-300 rounded">
+                                <label for="dog-owner" class="ml-2 block text-sm text-gray-700">I'm a dog owner</label>
+                            </div>
+                            <button type="submit" class="w-full bg-amber-500 text-white px-6 py-3 rounded-lg font-bold hover:bg-amber-600 transition duration-300">
+                                Subscribe Now
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-paw text-amber-500 text-3xl mr-2"></i>
+                        <span class="text-xl font-bold">Pawfect <span class="text-amber-500">Companions</span></span>
+                    </div>
+                    <p class="text-gray-400 mb-6">Connecting loving homes with dogs in need since 2010.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Adoption</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Available Dogs</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Adoption Process</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Adoption Fees</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Success Stories</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Foster Program</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Resources</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Dog Care Guides</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Training Tips</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Breed Information</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">Vet Recommendations</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition duration-300">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-semibold mb-6">Contact</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-amber-500 mt-1 mr-3"></i>
+                            <span class="text-gray-400">123 Dog Lane, Pet City, CA 90210</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt text-amber-500 mr-3"></i>
+                            <span class="text-gray-400">(555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope text-amber-500 mr-3"></i>
+                            <span class="text-gray-400">hello@pawfectcompanions.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-clock text-amber-500 mr-3"></i>
+                            <span class="text-gray-400">Mon-Fri: 9am-6pm</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-500 text-sm mb-4 md:mb-0">© 2023 Pawfect Companions. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition duration-300">Privacy Policy</a>
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition duration-300">Terms of Service</a>
+                    <a href="#" class="text-gray-500 hover:text-white text-sm transition duration-300">Accessibility</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+        
+        // Generate random paw prints
+        function createPawPrints() {
+            const container = document.querySelector('.hero-gradient');
+            for (let i = 0; i < 10; i++) {
+                const paw = document.createElement('div');
+                paw.className = 'paw-print text-4xl';
+                paw.innerHTML = '🐾';
+                paw.style.top = `${Math.random() * 100}%`;
+                paw.style.left = `${Math.random() * 100}%`;
+                paw.style.transform = `rotate(${Math.random() * 360}deg)`;
+                paw.style.opacity = Math.random() * 0.3 + 0.1;
+                paw.style.fontSize = `${Math.random() * 20 + 20}px`;
+                container.appendChild(paw);
+            }
+        }
+        
+        window.addEventListener('load', createPawPrints);
+    </script>
+</body>
+</html>
